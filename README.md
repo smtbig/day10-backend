@@ -84,6 +84,8 @@ uvicorn app.main:app --reload
 
 Visit http://localhost:8000/docs to view the interactive Swagger API documentation.
 
+---
+
 ## 📁 Project Structure
 ```
 .
@@ -102,20 +104,25 @@ Visit http://localhost:8000/docs to view the interactive Swagger API documentati
 ├── requirements.txt
 └── README.md
 ```
+---
 
 ## 🧪 Sample Endpoints
 ```
-Method -	Endpoint -	Description
+Method - Endpoint - Description
 GET	- /users/ -	List all users
-POST	- /tasks/	- Create new task
-GET	- /blog-posts/	- Get all blog posts
+POST - /tasks/ - Create new task
+GET	- /blog-posts/ - Get all blog posts
 ...	...	...
 ```
+---
+
 ## 📘 Notes
 
 This is a beginner-friendly project; database migrations (Alembic) are optional.
 
 Alembic can be added later if needed — instructions available in the docs.
+
+---
 
 ## 📤 Deployment Ready?
 
@@ -127,8 +134,19 @@ If deploying (Railway, Render, Heroku, etc.):
 
 ✅ Add deployment instructions here as needed
 
+---
+
 ## 🧑‍💻 Author
 
 Vasily Z.
 
 [GitHub](https://github.com/smtbig)
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+
+Feel free to use, modify, and distribute this code with attribution.
+
