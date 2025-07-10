@@ -30,7 +30,7 @@ A learning project built with FastAPI, SQLAlchemy, and PostgreSQL, including use
 
 1. **Clone the repo**
     ```bash
-    git clone https://github.com/your-username/day10-backend.git
+    git clone https://github.com/smtbig/day10-backend.git
     cd day10-backend
     ```
 
