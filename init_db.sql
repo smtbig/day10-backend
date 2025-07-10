@@ -1,0 +1,160 @@
+-- Drop tables if they exist (to avoid errors when re-running this script)
+DROP TABLE IF EXISTS blog_posts;
+DROP TABLE IF EXISTS tasks;
+DROP TABLE IF EXISTS users;
+
+-- USERS TABLE
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(150) NOT NULL UNIQUE,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+);
+
+-- TASKS TABLE
+CREATE TABLE tasks (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    is_complete BOOLEAN DEFAULT FALSE,
+    user_id INTEGER NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+-- BLOG POSTS TABLE
+CREATE TABLE blog_posts (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    content TEXT,
+    user_id INTEGER NOT NULL,
+    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+-- INSERT USERS
+INSERT INTO users (username, email) VALUES
+('alice', 'alice@example.com'),
+('bob', 'bob@example.com'),
+('charlie', 'charlie@example.com'),
+('diana', 'diana@example.com'),
+('eve', 'eve@example.com'),
+('frank', 'frank@example.com'),
+('grace', 'grace@example.com'),
+('hank', 'hank@example.com'),
+('irene', 'irene@example.com'),
+('jack', 'jack@example.com'),
+('kate', 'kate@example.com'),
+('leo', 'leo@example.com'),
+('mia', 'mia@example.com'),
+('nina', 'nina@example.com'),
+('oliver', 'oliver@example.com'),
+('paul', 'paul@example.com'),
+('quinn', 'quinn@example.com'),
+('rose', 'rose@example.com'),
+('steve', 'steve@example.com'),
+('tina', 'tina@example.com');
+
+-- INSERT TASKS
+INSERT INTO tasks (title, is_complete, user_id) VALUES
+('Fix bug in authentication', false, 1),
+('Add logging to API', true, 2),
+('Write unit tests', false, 3),
+('Design user dashboard', false, 4),
+('Refactor database layer', true, 5),
+('Document API endpoints', true, 6),
+('Clean up old migrations', false, 7),
+('Optimize SQL queries', false, 8),
+('Improve error messages', true, 9),
+('Review pull requests', false, 10),
+('Add pagination', true, 11),
+('Build admin panel', false, 12),
+('Test on mobile', true, 13),
+('Upgrade dependencies', false, 14),
+('Improve UX on form submission', true, 15),
+('Set up CI pipeline', false, 16),
+('Integrate Stripe', false, 17),
+('Add forgot-password flow', true, 18),
+('Implement rate limiting', false, 19),
+('Compress images', true, 20),
+('Seed test data', false, 1),
+('Fix 500 errors', true, 2),
+('Update project README', true, 3),
+('Add caching layer', false, 4),
+('Secure endpoints', true, 5),
+('Configure Docker volumes', false, 6),
+('Support dark mode', true, 7),
+('Add user profile page', false, 8),
+('Setup monitoring', true, 9),
+('Create custom exceptions', false, 10),
+('Fix bug in authentication', true, 11),
+('Add logging to API', false, 12),
+('Write unit tests', true, 13),
+('Design user dashboard', false, 14),
+('Refactor database layer', false, 15),
+('Document API endpoints', true, 16),
+('Clean up old migrations', true, 17),
+('Optimize SQL queries', false, 18),
+('Improve error messages', false, 19),
+('Review pull requests', true, 20),
+('Add pagination', false, 1),
+('Build admin panel', true, 2),
+('Test on mobile', false, 3),
+('Upgrade dependencies', true, 4),
+('Improve UX on form submission', false, 5),
+('Set up CI pipeline', true, 6),
+('Integrate Stripe', true, 7),
+('Add forgot-password flow', false, 8),
+('Implement rate limiting', true, 9),
+('Compress images', false, 10),
+('Seed test data', true, 11),
+('Fix 500 errors', false, 12),
+('Update project README', false, 13),
+('Add caching layer', true, 14),
+('Secure endpoints', false, 15),
+('Configure Docker volumes', true, 16),
+('Support dark mode', false, 17),
+('Add user profile page', true, 18),
+('Setup monitoring', false, 19),
+('Create custom exceptions', true, 20);
+
+-- INSERT BLOG POSTS
+INSERT INTO blog_posts (title, content, user_id) VALUES
+('Welcome to FastAPI', 'This is a quick intro to FastAPI.', 1),
+('Database Design Tips', 'Start with relationships in mind.', 2),
+('API Versioning Strategies', 'Use /v1, /v2 paths or headers.', 3),
+('Docker for Devs', 'Why Docker simplifies dev workflows.', 4),
+('SQL vs NoSQL', 'When to use each kind.', 5),
+('Writing Clean Code', 'Avoid nesting, write clear functions.', 6),
+('PostgreSQL Joins Explained', 'LEFT, RIGHT, INNER and OUTER joins.', 7),
+('Using Alembic', 'Version your DB schema with ease.', 8),
+('JWT Authentication', 'Secure APIs with tokens.', 9),
+('FastAPI Dependency Injection', 'Use Depends() effectively.', 10),
+('Async in FastAPI', 'When and how to use async def.', 11),
+('Pydantic Models', 'Validate and document your schemas.', 12),
+('Testing FastAPI Apps', 'pytest and TestClient tips.', 13),
+('CI/CD with GitHub Actions', 'Automate your deployments.', 14),
+('SQLAlchemy Relationship Mapping', 'one-to-many, many-to-many.', 15),
+('Rate Limiting APIs', 'Throttle requests to stay safe.', 16),
+('Error Handling Patterns', 'Use custom exceptions and handlers.', 17),
+('Environment Variables', 'Use dotenv for secrets.', 18),
+('Code Structure Best Practices', 'Keep it modular and scalable.', 19),
+('Deploying to Railway', 'Simple cloud deployment.', 20),
+('Logging in FastAPI', 'Monitor requests and errors.', 1),
+('Handling File Uploads', 'Save user files safely.', 2),
+('Pagination in APIs', 'Limit + offset for large datasets.', 3),
+('Caching with Redis', 'Speed up expensive queries.', 4),
+('WebSockets with FastAPI', 'Real-time communication.', 5),
+('Celery and Background Tasks', 'Run long processes async.', 6),
+('Securing API Endpoints', 'Use OAuth2 scopes.', 7),
+('OpenAPI and Swagger Docs', 'Automatic API docs built-in.', 8),
+('Working with UUIDs', 'Safer than integer IDs.', 9),
+('Managing DB Sessions', 'Avoid leaks using Dependency Injection.', 10),
+('Multi-User Authorization', 'Different roles for different users.', 11),
+('Custom Middleware', 'Intercept and modify requests.', 12),
+('Third-Party Auth', 'OAuth login with GitHub/Google.', 13),
+('Data Seeding Scripts', 'Populate your DB reliably.', 14),
+('Handling Large JSON', 'Streaming and chunking tips.', 15),
+('CSV Import/Export', 'Use pandas or manual logic.', 16),
+('API Rate Limit Metrics', 'Track usage with logs.', 17),
+('FastAPI with GraphQL', 'Use Strawberry or Ariadne.', 18),
+('Using .env in Production', 'Don''t commit secrets!', 19),
+('Frontend Integration', 'Connect React or Vue easily.', 20);

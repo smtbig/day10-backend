@@ -1,0 +1,28 @@
+# Python cache files
+__pycache__/
+*.pyc
+
+# Env files with secrets
+.env
+.env.*
+
+# VSCode settings folder
+.vscode/
+
+# Alembic migrations (optional)
+alembic/versions/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Pytest cache
+.pytest_cache/
+
+# MyPy type checking cache
+.mypy_cache/
+
+# Logs
+*.log
+
+*.db
