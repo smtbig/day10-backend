@@ -104,13 +104,13 @@ Visit http://localhost:8000/docs to view the interactive Swagger API documentati
 ```
 
 ## 🧪 Sample Endpoints
-
+```
 Method -	Endpoint -	Description
 GET	- /users/ -	List all users
 POST	- /tasks/	- Create new task
 GET	- /blog-posts/	- Get all blog posts
 ...	...	...
-
+```
 ## 📘 Notes
 
 This is a beginner-friendly project; database migrations (Alembic) are optional.
