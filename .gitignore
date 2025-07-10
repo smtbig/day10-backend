@@ -6,6 +6,9 @@ __pycache__/
 .env
 .env.*
 
+# Allow .env.example (negate the pattern)
+!.env.example
+
 # VSCode settings folder
 .vscode/
 
